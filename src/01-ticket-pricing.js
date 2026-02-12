@@ -23,5 +23,29 @@
  * @returns {number} The ticket price, or -1 for invalid input
  */
 export function getTicketPrice(age, isWeekend) {
-  // Your code here
+  let children = age <= 12;
+  let teens = age > 12 && age <= 17;
+  let adults = age > 17 && age <= 59;
+  let Senior = age >= 60;
+
+  if (age < 0 || Number.isNaN(age)) {
+    return -1;
+  }
+  let price = 0;
+
+  if (children) {
+    price = 8;
+  } else if (teens) {
+    price = 12;
+  } else if (adults) {
+    price = 15;
+  } else if (Senior) {
+    price = 10;
+  }
+
+  if (isWeekend) {
+    price += 3;
+  }
+
+  return price;
 }
